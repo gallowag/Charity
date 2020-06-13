@@ -20,11 +20,24 @@
       <span class="icon-bar"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
-     <ul class="navbar-nav mr-auto">
-       <li class="nav-item nav-link active"><%= link_to "Home", home_path %></li>
-       <li class="nav-item nav-link"><%= link_to "Opportunities", opportunities_path %></li>
-       <li class="nav-item nav-link"><%= link_to "About", about_path %></li>
-     </ul>
+      <ul class="navbar-nav mr-auto">
+         <li class="nav-item nav-link active"><%= link_to "Home", home_path %></li>
+         <li class="nav-item nav-link"><%= link_to "Opportunities", opportunities_path %></li>
+         <li class="nav-item nav-link"><%= link_to "About", about_path %></li>
+      </ul>
+    </div>
+    <div class="nav pull-right">
+       <% if current_user %>
+         <ul class="navbar-nav mr-auto">
+            <li class="nav-item" style="color:white"><%= current_user.email %></li>
+            <li class="nav-item nav-link"><%= link_to "Log out", logout_path, method: "delete" %></li>
+         </ul>
+       <% else %>
+         <ul class="navbar-nav mr-auto">
+            <li class="nav-item nav-link"><%= link_to "Login", 'login' %></li>
+            <li class="nav-item nav-link"><%= link_to "Join", 'join' %></li>
+         </ul>
+       <% end %>
     </div>
     </nav>
     <div class="jumbotron container">
