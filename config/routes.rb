@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   root 'pages#index', as: 'home'
 
   get 'join' => 'users#new'
+  get 'designers' => 'users#index'
+  get 'profile' => 'users#show', as: 'profile'
+  get 'edit' => 'users#edit', as: 'edit'
+  patch 'edit' => 'users#update', as: 'update'
+  patch 'designer' => 'users#designerify', as: 'designerify'
   resources :users
 
   get 'login' => 'sessions#new'

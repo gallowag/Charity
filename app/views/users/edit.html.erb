@@ -1,8 +1,8 @@
-<div class="signup">
+<div class="edit">
   <div class="container">
     <div class="form">
 
-    <h1>Sign up</h1>
+    <h1>Edit Profile</h1>
     <%= form_for(@user) do |f| %>
     <div class="field">
       <%= f.label :username %><br>
@@ -12,16 +12,9 @@
       <%= f.label :email %><br>
       <%= f.text_field(:email, {:class => 'form-control'}) %>
     </div>
-    <div class="field">
-      <%= f.label :password %><br>
-      <%= f.password_field(:password, {:class => 'form-control'}) %>
-    </div>
-    <div class="field">
-      <%= f.hidden_field(:privilege, value: @privilege) %>
-    </div>
     <div class="actions">
       <br>
-      <%= f.submit("Apply", {:class => 'btn btn-primary'}) %>
+      <%= f.submit("Update", {:class => 'btn btn-primary'}) %>
     </div>
     <% end %>
 

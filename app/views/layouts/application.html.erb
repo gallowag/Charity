@@ -21,15 +21,24 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
-         <li class="nav-item nav-link active"><%= link_to "Home", home_path %></li>
-         <li class="nav-item nav-link"><%= link_to "Opportunities", opportunities_path %></li>
-         <li class="nav-item nav-link"><%= link_to "About", about_path %></li>
+        <li class="nav-item nav-link"><%= link_to "Home", home_path %></li>
+        <li class="nav-item nav-link"><%= link_to "Opportunities", opportunities_path %></li>
+        <li class="nav-item nav-link"><%= link_to "About", about_path %></li>
+        <% if current_user %>
+          <% if current_user.privilege == 2 %>
+            <li class="nav-item nav-link" style="color:light-gray">|</li>
+            <li class="nav-item nav-link"><%= link_to "Designers", designers_path %></li>
+          <% elsif current_user.privilege == 1 %>
+            <li class="nav-item nav-link" style="color:white">|</li>
+            <li class="nav-item nav-link" style="color:white">Designer</li>
+          <% end %>
+        <% end %>
       </ul>
     </div>
     <div class="nav pull-right">
        <% if current_user %>
          <ul class="navbar-nav mr-auto">
-            <li class="nav-item" style="color:white"><%= current_user.email %></li>
+            <li class="nav-item nav-link">Welcome, <%= link_to current_user.username, profile_path %></li>
             <li class="nav-item nav-link"><%= link_to "Log out", logout_path, method: "delete" %></li>
          </ul>
        <% else %>
